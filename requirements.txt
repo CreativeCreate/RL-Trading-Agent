@@ -1,0 +1,9 @@
+# Assignment 3: Reinforcement Learning Trading Agent
+# Python 3.8+
+
+gymnasium>=0.29.0
+numpy>=1.24.0
+pandas>=2.0.0
+torch>=2.0.0
+yfinance>=0.2.28
+matplotlib>=3.7.0
