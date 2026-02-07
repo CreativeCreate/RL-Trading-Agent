@@ -7,7 +7,7 @@ from typing import Optional
 
 import numpy as np
 
-from data_loader import fetch_stock_data, train_test_split
+from data_loader import load_data, train_test_split
 from dqn_agent import DQNAgent
 from trading_env import TradingEnv
 
@@ -39,8 +39,8 @@ def train(
     save_dir = Path(save_dir)
     save_dir.mkdir(parents=True, exist_ok=True)
 
-    # 1) Load the training data
-    df = fetch_stock_data(symbol=symbol, period=period)
+    # 1) Load the training data (load_data adds Return and CloseNorm for the env)
+    df = load_data(symbol=symbol, period=period)
     train_df, _ = train_test_split(df, train_ratio=train_ratio)
     print(f"Training on {len(train_df)} days ({symbol})")
 

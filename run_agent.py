@@ -8,7 +8,7 @@ from typing import Optional, Union
 import matplotlib.pyplot as plt
 import numpy as np
 
-from data_loader import fetch_stock_data, train_test_split
+from data_loader import load_data, train_test_split
 from dqn_agent import DQNAgent
 from trading_env import TradingEnv
 
@@ -39,8 +39,8 @@ def run_agent(
     if not model_path.is_file():
         raise FileNotFoundError(f"Model not found: {model_path}")
 
-    # 1) Load the test data
-    df = fetch_stock_data(symbol=symbol, period=period)
+    # 1) Load the test data (load_data adds Return, etc., for the env)
+    df = load_data(symbol=symbol, period=period)
     _, test_df = train_test_split(df, train_ratio=train_ratio)
     # check if the test set is too small to run the agent
     if len(test_df) < window_size + 5:
