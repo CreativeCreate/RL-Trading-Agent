@@ -24,6 +24,32 @@ python run_agent.py --model outputs/dqn_trading.pt --plot outputs/equity_curve.p
 
 Use the same `--symbol` (and default `period`/`train_ratio`) as in training so the test split matches.
 
+## Sample results
+
+Example equity curve (DQN agent vs buy-and-hold on the test set):
+
+![Sample equity curve](sample_equity_curve.png)
+
+## Sample train log
+
+```text
+Training on 352 days (AAPL)
+Episode 20/200 | Steps: 197 | Avg reward (last 20): 0.041436 | ε: 0.942
+Episode 40/200 | Steps: 322 | Avg reward (last 20): 0.050355 | ε: 0.887
+Episode 60/200 | Steps: 288 | Avg reward (last 20): 0.038212 | ε: 0.834
+...
+Episode 200/200 | Steps: 301 | Avg reward (last 20): 0.044521 | ε: 0.050
+Model saved to outputs/dqn_trading.pt
+```
+
+## Sample test log
+
+```text
+Plot saved to outputs/equity_curve.png
+Agent total return: 0.0546 | Buy & Hold: 0.0516
+Agent final value: $105,458.99 | Initial: $100,000.00
+```
+
 ## Project structure
 
 | File             | Purpose                                                                                                     |
